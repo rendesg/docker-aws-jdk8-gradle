@@ -28,9 +28,10 @@ RUN mkdir -p $GRADLE_FOLDER
 # Mark as volume
 VOLUME  $GRADLE_FOLDER
 
-RUN set -o errexit -o nounset \
-	&& echo "Testing Gradle installation" \
-	&& gradle --version
+# Test Gradle install
+# RUN set -o errexit -o nounset \
+# 	&& echo "Testing Gradle installation" \
+# 	&& gradle --version
 
 ENV S3_TMP /tmp/s3cmd.zip
 ENV S3_ZIP /tmp/s3cmd-master
