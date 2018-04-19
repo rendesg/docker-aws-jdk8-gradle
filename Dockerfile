@@ -1,6 +1,22 @@
 FROM openjdk:8u151-jdk-alpine3.7
 MAINTAINER Gabor Rendes <rendesg@gmail.com>
 
+#
+# Docker
+#
+# Install the magic wrapper.
+ADD ./wrapdocker /usr/local/bin/wrapdocker
+
+# Install Docker and dependencies
+RUN apk --update add \
+  bash \
+  iptables \
+  ca-certificates \
+  e2fsprogs \
+  docker \
+  && chmod +x /usr/local/bin/wrapdocker \
+  && rm -rf /var/cache/apk/*
+
 ENV GRADLE_VERSION=4.6
 ENV GRADLE_HOME=/opt/gradle
 ENV GRADLE_FOLDER=/root/.gradle
